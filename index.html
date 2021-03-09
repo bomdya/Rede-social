@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mocomunity</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+</head>
+<body>
+    <nav class= "navegador">
+        <div class="cabecalho-navegador">
+            <h3 class="logo-site">
+                <!-- No lado esquerdo deve ter o logo da sua página. -->
+                mocomunity 
+            </h3>
+            <!-- 	No lado direito deve ter um botão “postar” e um botão para menu hambúrguer. -->
+        <div class="post">
+            <button class="bt-postar"> Postar </button>
+        </div>
+
+            <button class="hamburg"> &#9776; </button>
+        </div>
+        
+        <div class="menu-retratil">
+            <a href="">Home</a>
+            <a href="">Destaque</a>
+            <a href="">Mensagens antigas</a>
+            <a href="">Tópicos</a>
+        
+        </div>
+
+    </nav>
+    
+    <nav class="menu-esq">
+        <a href="">Home</a>
+        <a href="">Destaque</a>
+        <a href="">Mensagens antigas</a>
+        <a href="">Tópicos</a>
+    </nav>
+    <div class="topico">
+        
+        <h4> Tópico de Hoje: #MVTreatPeopleWithKindness. Deem suas opiniões!</h4>
+    </div>
+    <div class="container">
+     
+           <!-- modal e overlay -->
+           <div class="overlay-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 style="font-family: Arial, Helvetica, sans-serif;">Postar comentário</h3>
+                    <button class="modal-close"> x </button>
+                </div>
+                <div class="modal-content">
+               
+                    <!-- form -->
+                        <form class="formulario-msg" action="" id="formulario-msg">
+                            <input class="nome-form" id="nome-form"type="text"  placeholder="Nome">
+                            <input class="mensagem-form" id="mensagem-form" type="text"  maxlength = "140" class="mensagem" 
+                            placeholder="Escreva sua mensagem">
+                            
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button class="bt-modal bt-close">
+                                    Close
+                                </button>
+                                <input class="bt-modal bt-submit" type="submit" value="Enviar" onclick="BD_Array()"> 
+                                
+                                </button>
+                            </div>
+                        </form>
+                        <!-- form -->
+
+                    </div>
+            </div>    
+          <!-- fecha modal -->
+
+
+        
+       <div class="feed">
+            <div class="card-destaque" id="card-destaque">
+                <h3 class="nome-card-destaque" id="nome-card-destaque"> Dya ⭐️ </h3>
+                <p class="mensagem-card-destaque" id="mensagem-card-destaque">  Bem vindo! Coloque no modo responsivo para ver o menu hamburguer </p>
+            </div>
+            
+            <div class="card" id="card">
+                <h3 class="nome-card" id="nome-card"> João </h3>
+                <p class="mensagem-card" id="mensagem-card"> Amei a participação de Phoebe Waller-Bridge!! </p>
+            </div>
+           
+            <div class="card" id="card">
+                <h3 class="nome-card" id="nome-card"> Jesca </h3>
+                <p class="mensagem-card" id="mensagem-card"> Eu adorei! Entregou tudo! </p>
+            </div>
+       </div>
+
+    </div>
+
+
+
+
+
+
+
+   
+
+            <script>   
+            
+                // bottons navegador
+
+                let button = document.querySelector(".navegador .cabecalho-navegador .hamburg");
+
+                let menu_retratil = document.querySelector(".navegador .menu-retratil");
+                button.addEventListener("click" , function(){
+                    menu_retratil.classList.toggle("active");
+                });
+
+                //modal
+                let btPostar = document.querySelector(".navegador .post .bt-postar");
+                let overlayModal = document.querySelector (".container .overlay-modal");
+                
+                // abrir modal com o botao Postar
+                btPostar.addEventListener("click", function(){
+                    overlayModal.classList.add("active");
+                })
+
+                // fechar modal com o X
+                let buttonClose = document.querySelector(".modal-container .modal-footer .bt-close");
+                btPostar.addEventListener("click", function(){
+                    overlayModal.classList.add("active");
+                })
+                buttonClose.addEventListener("click", function(){
+                    overlayModal.classList.remove("active")
+                })
+
+                // fechar clicando no botão close
+                let modalClose = document.querySelector(".modal-container .modal-header .modal-close");
+                buttonClose.addEventListener("click", function(){
+                    overlayModal.classList.remove("active")
+                })
+                modalClose.addEventListener("click", function(){
+                    overlayModal.classList.remove("active");
+                })
+
+                // quando clicar em Enviar fechar o modal
+                let buttonSubmit = document.querySelector(".modal-container .modal-footer .bt-submit");
+                btPostar.addEventListener("click", function(){
+                    overlayModal.classList.add("active");
+                })
+                buttonSubmit.addEventListener("click", function(){
+                    overlayModal.classList.remove("active")
+                })
+
+                // fechar clicando fora
+                window.addEventListener("click", function (event){
+                    if(event.target == overlayModal){
+                        overlayModal.classList.remove("active");
+                    }
+                })
+
+
+                //formulário mensagem
+
+                                
+                let nome_form = document.querySelector(".nome-form");
+                let mensagem_form = document.querySelector(".mensagem-form");
+                let bt_submit = document.querySelector(".bt-submit");
+                let feed = document.querySelector(".feed");
+                //end formulario 
+
+                //botão
+               bt_submit.addEventListener("click",  function (event) {
+                    event.preventDefault();
+                    let nome = nome_form.value;
+                    let mensagem = mensagem_form.value;
+                    
+                        let card = document.createElement("div");
+                        card.classList.add("card");
+                        feed.appendChild(card);
+
+                        let h3 = document.createElement("h3");
+                        h3.classList.add("nome-card");
+                        let text_h3 = document.createTextNode(nome);
+                        h3.appendChild(text_h3);
+                        card.appendChild(h3);
+
+                        let mensagem_p = document.createElement("p");
+                        mensagem_p.classList.add("mensagem-card");
+                        let text_mensagem = document.createTextNode(mensagem);
+                        mensagem_p.appendChild(text_mensagem);
+                        card.appendChild(mensagem_p);
+
+                        
+                } );
+             
+
+
+
+                //Tentativa de Desafio (falha)//
+            //     function BD_Array(params) {
+                    
+            //         let Card_Destaque = document.getElementById('card-destaque');
+            //         let FormInput = document.getElementById('formulario-msg');
+                    
+            //         FormInput.addEventListener('submit', function(e) {
+            //         e.preventDefault();
+                    
+            //         let [nome_form, mensagem_form] = ['nome-form', 'mensagem-form'].map(
+            //             name => FormInput.querySelector(`[nome-form="${name}"]`).value,
+            //             name => FormInput.querySelector(`[mensagem-form="${name}"]`).value
+            //         );
+            //         FormInput.querySelector(`[nome-form="${nome_form}"]`).value
+            //         FormInput.querySelector(`[mensagem-form="${nome_form}"]`).value
+                    
+            //         FormInput.querySelector(`[nome-card-destaque="${nome_card}"]`).value
+            //         FormInput.querySelector(`[mensagem-card-destaque="${mensagem_card}"]`).value
+
+            //         document.getElementById("demo").innerHTML = "Paragraph changed!";
+
+            //         setTimeout((BD_Array) => {
+            //             document.getElementById("formulario-msg").innerHTML;
+            //         }, 2000);
+               
+            //     }); 
+            // }
+
+            </script>
+        <!-- fecha js modal -->
+
+</body>
+</html>

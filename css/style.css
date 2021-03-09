@@ -1,0 +1,290 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.navegador /* superior*/ { 
+    background-color: #f8f9fa;
+    position: fixed;
+    top: 0;
+    
+    height: 40px;
+    width: 100%;
+}
+.navegador .cabecalho-navegador{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.navegador .cabecalho-navegador .post{
+ margin-left: auto;
+ padding: 0px 20px;
+}
+.navegador .cabecalho-navegador button.hamburg{
+    margin-left: auto;
+    padding: 5px 15px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.navegador .menu-retratil{
+    height: 0px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder; 
+    background-color: #f8f9fa;
+    width: 400px;
+    transition: height 600ms;
+}
+.navegador .menu-retratil a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 30px 20px;
+    overflow: hidden;
+    width: 400px;
+}
+nav.menu-esq a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    padding: 30px;
+    width: 300px;
+    overflow: hidden;
+}
+nav.menu-esq{
+    display: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.feed.active {
+    margin-left: 400px;
+
+}
+.navegador .menu-retratil a:hover, nav.menu-esq a:hover{
+    background-color: #606264;
+}
+.navegador .menu-retratil.active{
+    position: fixed;
+    height: calc(100vh - 40px);
+    margin-bottom: 0;
+    width: 400px;
+}
+button.bt-postar{
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: #0062cc;
+    width: 70px;
+}
+.container {
+    width: calc(100vw - 400px);
+    height: 100%;
+    display: flex;
+}
+.logo-site{
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+margin-left: 20px;
+}
+
+.topico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    margin-top: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 18px
+}
+
+
+@media screen and (min-width: 768px){
+    .navegador .cabecalho-navegador button.hamburg {
+        display: none;
+    }
+    .navegador .menu-retratil{
+        display: none;
+    }
+    nav.menu-esq{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: calc(100vh - 40px);
+        background-color: #f8f9fa;
+        display: block;
+        }
+    .container{
+        margin-left: 300px;
+        display: flex;
+        flex-wrap: wrap
+    
+    }
+    .topico{
+        display: flex;
+        padding-left: 200px;
+        margin-top: 90px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: lighter;
+        font-size: 20px
+    }
+}
+
+/* modal css */
+
+.overlay-modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.overlay-modal.active{
+    display: flex;
+}
+.modal-container{
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    height: 300px;
+    position: relative;
+}
+.modal-container .modal-header{
+    display: flex;
+    padding: 3px 25px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+.modal-container .modal-header button{
+    margin-left: auto;
+    background-color: transparent;
+    border: 0px;
+    width: 49px;
+    height: 50px;
+    cursor: pointer;
+}
+.modal-container .modal-content form{
+    padding: 30px 90px 10px;
+    justify-content: center;
+    align-items: center;
+}
+.nome-form{
+    width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgba(60, 142, 250, 0.226);
+    border: solid 1px rgba(60, 142, 250, 0.603);    
+}
+.mensagem-form{
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: rgba(60, 142, 250, 0.226);
+    border: solid 1px rgba(60, 142, 250, 0.603);  
+}
+.nome-form::-webkit-input-placeholder {
+    color:  rgba(60, 142, 250, 0.603);
+    font-weight: 700;
+    padding: 20px;
+}
+.mensagem-form::-webkit-input-placeholder {
+    color:  rgba(60, 142, 250, 0.603);
+    font-weight: 700;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.modal-container .modal-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-top: solid 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+
+}
+.modal-container .modal-footer .bt-modal{
+    border: none;
+    border-radius: 5px;
+    margin-left: 6px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.modal-container .modal-footer .bt-modal.bt-submit{
+    background-color: #0062cc;
+}
+.modal-container .modal-footer .bt-modal.bt-close{
+    background-color: #636466;
+}
+
+.feed{
+   padding: 20px 90px;
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.feed .card{
+    width: 300px;
+    padding: 20px 20px 40px;
+    margin-top: 40px;
+    margin: 20px;
+    border-radius: 15px;
+    color: rgb(19, 43, 73);
+    background-color: rgba(60, 142, 250, 0.226);
+    border: solid 1px rgba(60, 142, 250, 0.603);  
+}
+
+.feed .card-destaque{
+    width: 300px;
+    padding: 20px 20px 40px;
+    margin-top: 40px;
+    margin: 20px;
+    border-radius: 15px;
+    color: rgb(19, 43, 73);
+    background-color: rgba(47, 231, 23, 0.219);
+    border: solid 1px rgba(4, 95, 4, 0.603);  
+}
+
+.feed .card-destaque .nome-card-destaque{
+    padding: 10px 0px 12;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+ 
+}
+.feed .card .nome-card{
+    padding: 10px 0px 12;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+ 
+}
+
+.mensagem-card-destaque{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+}
+
+
+.mensagem-card{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+}
